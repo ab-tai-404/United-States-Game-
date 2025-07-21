@@ -17,11 +17,9 @@ correct_answer = []
 is_on = 50
 
 while len(correct_answer) < 50 :
-    print(all_states)
     answer_state = screen.textinput(f"{len(correct_answer)}/50 States Correct",
                                     "Name of first player:").title()
     answer= answer_state.lower()
-    print(answer)
     if answer_state in all_states :
         state_data = data[data.state == answer_state]
         x = int(state_data.x.iloc[0])
@@ -30,8 +28,8 @@ while len(correct_answer) < 50 :
         timy.write(f"{answer_state}", align='left', font=('Arial', 9 , 'normal'))
         correct_answer.append(answer_state)
     elif answer_state == "Exit" :
-        state_not_know = [item for item in all_states if item not in correct_answer]
-        df = pd.DataFrame(state_not_know)
+        states_to_learn = [item for item in all_states if item not in correct_answer]
+        df = pd.DataFrame("state_to_learn")
         df.to_csv("states_to_learn.csv")
         break
 
